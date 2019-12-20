@@ -18,6 +18,7 @@ public class SelectRegisteredOwner {
 	
 	public SelectRegisteredOwner( Driver driver) {
 		this.driver = driver;
+		this.driver.waitForElement(registeredOwner, 2);
 	}
 	
 	public void specifyTheCarOwner() {

@@ -2,6 +2,7 @@ package services;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -59,7 +60,7 @@ public class Driver  {
 	}
 
 	public void click(String xPath) {
-		driver.findElement(By.xpath(xPath)).click();
+		 driver.findElement(By.xpath(xPath)).click();
 	}
 
 	public void waitForElement(String xPath, int seconds) {
@@ -105,8 +106,12 @@ public class Driver  {
 	}
 
 
+	
+
 	public void checkCurrentURL(String expectedURL) {
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		String realURL = driver.getCurrentUrl();
+		System.out.println("------------------------------------URL is: "+realURL);
 		Assert.assertTrue(realURL.equals(expectedURL));
 		
 	}
