@@ -4,6 +4,8 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import pageObjects.EnterBirthDate;
+import pageObjects.EnterRegistrationDate;
 import pageObjects.SelectBodyType;
 import pageObjects.SelectEngine;
 import pageObjects.SelectEnginePower;
@@ -22,7 +24,9 @@ public class RegisterInsuranceSteps {
 	SelectBodyType sbt;
 	SelectFuelType sft;
 	SelectEnginePower sep;
-	private SelectEngine se;
+	SelectEngine se;
+	EnterRegistrationDate erd;
+	EnterBirthDate ebd;
 	
 //---------------------------------------------------------- selectPrecondition	
 	
@@ -143,6 +147,30 @@ public class RegisterInsuranceSteps {
 		se = new SelectEngine(sep.getDriver());
 		se.checkCurrentURL("https://hello.friday.de/quote/selectEngine");
 	}
+//----------------------------------------------------------------- select Engine
 	
+	@When("^I specify the engine$")
+	public void i_specify_the_engine() throws Throwable {
+	    se.selectEngine();
+	}
+
+	@Then("^I am asked to specify the registeration date$")
+	public void i_am_asked_to_specify_the_registeration_date() throws Throwable {
+		erd = new EnterRegistrationDate(se.getDriver());
+		erd.checkCurrentURL("https://hello.friday.de/quote/enterRegistrationDate");
+	}
+//------------------------------------------------------------------ Registeration date
+	
+	@When("^I specify the registeration date$")
+	public void i_specify_the_registeration_date() throws Throwable {
+		erd.typeRegisterationDate();
+		erd.clickOnWeiter();
+	}
+
+	@Then("^I am asked to specify my birth date$")
+	public void i_am_asked_to_specify_my_birth_date() throws Throwable {
+		ebd = new EnterBirthDate(erd.getDriver());
+	    ebd.checkCurrentURL("https://hello.friday.de/quote/enterBirthDate");
+	}
 	
 }

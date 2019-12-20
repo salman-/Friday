@@ -29,4 +29,10 @@ Feature: Create a new insurance contract.
     
     When I select the horespower  of the car 
     Then I am asked specify Engine 
+    
+    When I specify the engine
+    Then I am asked to specify the registeration date
+    
+    When I specify the registeration date
+    Then I am asked to specify my birth date
 
