@@ -1,28 +1,20 @@
 package pageObjects;
 
-import lombok.Data;
 import services.Driver;
+import services.Utils;
 
-@Data
-public class SelectBodyType {
+public class SelectBodyType extends Utils{
 	
-	Driver driver;
-	
-	final String bodyType = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/form/div[2]/div[2]/button[1]";
+	final static String bodyType = "//button[contains(., 'Cabrio')]";
 	
 	public SelectBodyType(Driver driver) {
-		this.driver = driver;
-		this.driver.waitForElement(bodyType, 2);
+		super(driver,bodyType);
 	}
 	
 	public void selectBodyTypeOfTheCar() {
 		driver.click(bodyType);
 	}
 	
-	public void checkCurrentURL(String expectedURL) {
-		driver.checkCurrentURL(expectedURL);
-		
-	}
 	
 
 }

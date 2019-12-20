@@ -1,26 +1,22 @@
 package pageObjects;
 
-import services.Driver;
 
-public class SelectFuelType {
+import services.Driver;
+import services.Utils;
+
+public class SelectFuelType extends Utils {
 	
-	Driver driver;
 	
-	final String fuel = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/form/div[2]/div[2]/button[1]";  //Benzin
-	  //final String fuel = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/form/div[2]/div[2]/button[2]";  //Diesel
+	final static String fuel = "//button[contains(., 'Benzin')]";  //Benzin
 	
 	public SelectFuelType(Driver driver) {
-		this.driver = driver;
-		this.driver.waitForElement(fuel, 2);
+		
+		super(driver,fuel);
 	}
 	
 	public void selectFuel() {
+		
 		this.driver.click(fuel);
-		System.out.println( "Should be clicked !!!!" );
-	}
-	
-	public void checkCurrentURL(String expectedURL) {
-		driver.checkCurrentURL(expectedURL);	
 	}
 	
 }

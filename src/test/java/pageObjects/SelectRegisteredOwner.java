@@ -1,24 +1,17 @@
 package pageObjects;
 
-import lombok.Data;
+
 import services.Driver;
+import services.Utils;
 
-@Data
-public class SelectRegisteredOwner {
+public class SelectRegisteredOwner extends Utils {
 	
-	//Bist du der Halter des Autos (zugelassen auf dich)?
-	final String registeredOwner = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/form/div[2]/button[2]";
-
-	//Das Auto war...
-	final String newOrUsed = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/form/div[3]/div[2]/button[2]";
-	
-	final String weiterButton = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/form/section/div/div/div/button[2]";
-	
-	Driver driver;
+	final static String registeredOwner = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/form/div[2]/button[2]";
+	final static String newOrUsed = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/form/div[3]/div[2]/button[2]";
+	final static String weiterButton = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/form/section/div/div/div/button[2]";
 	
 	public SelectRegisteredOwner( Driver driver) {
-		this.driver = driver;
-		this.driver.waitForElement(registeredOwner, 2);
+		super(driver,newOrUsed);
 	}
 	
 	public void specifyTheCarOwner() {
@@ -33,8 +26,5 @@ public class SelectRegisteredOwner {
 		driver.click(weiterButton);
 	}
 	
-	public void checkCurrentURL(String expectedURL) {
-		driver.checkCurrentURL(expectedURL);
-	}
 	
 }

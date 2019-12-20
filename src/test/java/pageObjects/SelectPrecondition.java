@@ -2,24 +2,17 @@ package pageObjects;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.concurrent.TimeUnit;
+import services.Utils;
 
-import lombok.Data;
-import services.Driver;
 
-@Data
-public class SelectPrecondition {
+public class SelectPrecondition extends Utils {
 	
-	Driver driver;
-	
-	final String option = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/form/div[1]/button[2]";
-	final String insuranceStartingDate = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/form/div[2]/div[2]/div/input";
-	final String weiterButton = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/form/section/div/div/div/button";
+	final static String option = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/form/div[1]/button[2]";
+	final static String insuranceStartingDate = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/form/div[2]/div[2]/div/input";
+	final static String weiterButton = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/form/section/div/div/div/button";
 										  
 	
-	
 	public SelectPrecondition(String url) {
-		driver= new Driver();
 		driver.laodPage(url);
 	}
 	
@@ -38,9 +31,6 @@ public class SelectPrecondition {
 		driver.click(weiterButton);
 	}
 	
-	public void checkCurrentURL(String expectedURL) {
-		driver.checkCurrentURL(expectedURL);
-	}
 	
 	public String getTodayDate() {
 		

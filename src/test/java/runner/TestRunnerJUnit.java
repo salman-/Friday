@@ -17,7 +17,7 @@ import com.cucumber.listener.Reporter;
 				"pretty",
 				"com.cucumber.listener.ExtentCucumberFormatter:target/report.html"
 		},
-		tags 				= {"@all"},
+
 		glue 				= {"stepDefinitions"}
 		)
 public class TestRunnerJUnit {
