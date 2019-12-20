@@ -103,16 +103,16 @@ public class RegisterInsuranceSteps {
 	@When("^I click on the body type of the car$")
 	public void i_click_on_the_body_type_of_the_car() throws Throwable {
 	    sbt.selectBodyTypeOfTheCar();
-		
+	    sft = new SelectFuelType(sbt.getDriver());
 	    
 	}
 
 	@Then("^I am asked to specify the Fuel Type of the car$")
 	public void i_am_asked_to_specify_the_Fuel_Type_of_the_car() throws Throwable {
 		
-		 sft = new SelectFuelType(sbt.getDriver());
+		 
 		 sft.selectFuel();
-		//sft.checkCurrentURL("https://hello.friday.de/quote/selectFuelType");
+		 //sft.checkCurrentURL("https://hello.friday.de/quote/selectFuelType");
 	    
 	}
 	
