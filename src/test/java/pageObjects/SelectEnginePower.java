@@ -5,14 +5,17 @@ import services.Utils;
 
 public class SelectEnginePower extends Utils {
 	
-	final static String horsePower = "//button[contains(., '105 kW / 143 PS')]";
+	final static String wizardTitle = "//div[contains(.,'Wie viele PS hat dein Auto?')]";
+	static String autonEnginePower = "//button[contains(., 'enginer-power')]";
 	
 	public SelectEnginePower(Driver driver) {
-		super(driver,horsePower);
+		super(driver,wizardTitle);
 	}
 	
-	public void selectHorsePower() {
-		driver.click(horsePower);
+	public void selectHorsePower(String powerOfEngine) {
+		
+		autonEnginePower = autonEnginePower.replaceAll("enginer-power", powerOfEngine);
+		driver.click(autonEnginePower);
 	}
 	
 

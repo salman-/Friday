@@ -7,16 +7,18 @@ import services.Utils;
 public class SelectFuelType extends Utils {
 	
 	
-	final static String fuel = "//button[contains(., 'Benzin')]";  //Benzin
+	final static String wizardTitle = "//div[contains(.,'Was tankst du?')]";
+	static String autoFuel = "//button[contains(., 'fuel')]";  
 	
 	public SelectFuelType(Driver driver) {
 		
-		super(driver,fuel);
+		super(driver,wizardTitle);
 	}
 	
-	public void selectFuel() {
+	public void selectFuel(String fuel) {
 		
-		this.driver.click(fuel);
+		autoFuel = autoFuel.replaceAll("fuel", fuel);
+		this.driver.click(autoFuel);
 	}
 	
 }

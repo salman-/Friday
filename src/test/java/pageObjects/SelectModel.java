@@ -4,17 +4,20 @@ import services.Driver;
 import services.Utils;
 
 public class SelectModel extends Utils{
-
-	final static String model = "//button[contains(., '1er')]";
+	
+	
+	final static String wizardTitle = "//div[contains(.,'Wähle dein Automodell')]";
+	static String autoModel = "//button[contains(., 'model')]";
 	
 	public SelectModel(Driver driver) {
 		
-		super(driver,model);
+		super(driver,wizardTitle);
 		
 	}
 	
-	public void selectModelOfCar() {
-		driver.click(model);
+	public void selectModelOfCar(String model) {
+		autoModel = autoModel.replaceAll("model", model);
+		driver.click(autoModel);
 	}
 	
 	

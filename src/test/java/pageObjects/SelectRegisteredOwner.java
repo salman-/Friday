@@ -6,12 +6,13 @@ import services.Utils;
 
 public class SelectRegisteredOwner extends Utils {
 	
-	final static String registeredOwner = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/form/div[2]/button[2]";
-	final static String newOrUsed = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/form/div[3]/div[2]/button[2]";
-	final static String weiterButton = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/form/section/div/div/div/button[2]";
+	final static String wizardTitle = "//div[contains(.,'Wird das Auto auf dich zugelassen?')]";
+	final static String registeredOwner = "//button[contains(.,'Nein')]";
+	final static String newOrUsed = "//button[contains(.,'bei Kauf neu')]";
+	final static String weiterButton = "//button[contains(.,'Weiter')]";
 	
 	public SelectRegisteredOwner( Driver driver) {
-		super(driver,newOrUsed);
+		super(driver,wizardTitle);
 	}
 	
 	public void specifyTheCarOwner() {

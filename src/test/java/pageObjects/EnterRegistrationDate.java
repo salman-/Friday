@@ -5,16 +5,17 @@ import services.Utils;
 
 public class EnterRegistrationDate extends Utils{
 	
+	final static String wizardTitle = "//div[contains(.,'Wann war die Erstzulassung?')]";
 	final static String monthYearFirstRegistered = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/form/div/div[2]/div/div/input";
-	final static String weiterButton = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/form/section/div/div/div/button[2]";												
+	final static String weiterButton = "//button[contains(.,'Weiter')]";												
 
 	public EnterRegistrationDate(Driver driver) {
-		super(driver,monthYearFirstRegistered);
+		super(driver,wizardTitle);
 	}
 	
 	public void typeRegisterationDate() {
 		driver.clearTextbox(monthYearFirstRegistered);
-		driver.insertText(monthYearFirstRegistered, "01.2020");
+		driver.insertText(monthYearFirstRegistered, "02.2020");
 		
 	}
 	

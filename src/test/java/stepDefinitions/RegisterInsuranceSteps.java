@@ -29,7 +29,7 @@ public class RegisterInsuranceSteps {
 	EnterBirthDate ebd;
 	
 //---------------------------------------------------------- selectPrecondition	
-	
+		
 	@Given("^I am in the starting page$")
 	public void i_am_in_the_starting_page() throws Throwable {
 		sp = new SelectPrecondition("https://hello.friday.de/quote/selectPrecondition");
@@ -49,13 +49,14 @@ public class RegisterInsuranceSteps {
 	public void i_click_on() throws Throwable {
 	    sp.clickOnWeiter();
 	}
-
+	
 	@Then("^It asks for the owner of the car$")
 	public void it_asks_for_the_owner_of_the_car() throws Throwable {
 		sro = new SelectRegisteredOwner(sp.getDriver());
 	    sro.checkCurrentURL("https://hello.friday.de/quote/selectRegisteredOwner");
 	}
-//----------------------------------------------------------------------------------------- selectRegisteredOwner
+	
+	//----------------------------------------------------------------------------------------- selectRegisteredOwner
 
 	@Given("^I am not the ownner of the car$")
 	public void i_am_not_the_ownner_of_the_car() throws Throwable {
@@ -72,7 +73,7 @@ public class RegisterInsuranceSteps {
 	public void i_click_on_Weiter() throws Throwable {
 	    sro.clickOnWeiter();
 	}
-
+	
 	@Then("^It navigates to selectVehicle$")
 	public void it_navigates_to_selectVehicle() throws Throwable {
 		sv = new SelectVehicle(sro.getDriver());
@@ -81,13 +82,13 @@ public class RegisterInsuranceSteps {
 	}
 	
 //----------------------------------------------------------------------------- selectVehicle
-
+	
 	@When("^I click on the \"([^\"]*)\" of my car in the list$")
 	public void i_click_on_the_in_the_list(String brand) throws Throwable {
 		print(brand);
-	    sv.selectCar();
+	    sv.selectCar(brand);
 	}
-
+	
 	@Then("^I am asked to specify the model of my car in selectModel$")
 	public void i_am_asked_to_specify_the_model_of_my_car_in_selectModel() throws Throwable {
 		sm = new SelectModel(sv.getDriver());
@@ -97,10 +98,10 @@ public class RegisterInsuranceSteps {
 	@When("^I click on the \"([^\"]*)\" of my car$")
 	public void i_click_on_the_model_of_my_car(String model) throws Throwable {
 		print(model);
-	    sm.selectModelOfCar();
+	    sm.selectModelOfCar(model);
 	    
 	}
-
+	
 	@Then("^I am asked to specify the body type of the car$")
 	public void i_am_ask_to_specify_the_body_type_of_the_car() throws Throwable {
 	    sbt = new SelectBodyType(sm.getDriver());
@@ -112,13 +113,14 @@ public class RegisterInsuranceSteps {
 	@When("^I click on the \"([^\"]*)\" of the car$")
 	public void i_click_on_the_body_type_of_the_car(String bodyType) throws Throwable {
 		print(bodyType);
-	    sbt.selectBodyTypeOfTheCar();
+	    sbt.selectBodyTypeOfTheCar(bodyType);
 	}
-
+	
 	@Then("^I am asked to specify the Fuel Type of the car$")
 	public void i_am_asked_to_specify_the_Fuel_Type_of_the_car() throws Throwable {
+		
 		 sft = new SelectFuelType(sbt.getDriver());
-		 sft.checkCurrentURL("https://hello.friday.de/quote/selectFuelType");
+		 sbt.checkCurrentURL("https://hello.friday.de/quote/selectFuelType");
 	    
 	}
 	
@@ -127,11 +129,10 @@ public class RegisterInsuranceSteps {
 	@When("^I select the \"([^\"]*)\"$")
 	public void i_select_the_fuel(String fuel) throws Throwable {
 		
-		
 		print(fuel);
-		sft.selectFuel();
+		sft.selectFuel(fuel);
 	}
-
+	
 	@Then("^I am asked to specify the horse power of the car$")
 	public void i_am_asked_to_specify_the_horse_power_of_the_car() throws Throwable {
 	    sep = new SelectEnginePower(sft.getDriver());
@@ -142,7 +143,7 @@ public class RegisterInsuranceSteps {
 		@When("^I select the \"([^\"]*)\" of engine$")
 	public void i_select_the_of_engine(String powerOfEngine) throws Throwable {
 		print(powerOfEngine);
-	    sep.selectHorsePower();
+	    sep.selectHorsePower(powerOfEngine);
 	}
 		
 	@Then("^I am asked specify Engine$")
@@ -155,9 +156,9 @@ public class RegisterInsuranceSteps {
 	@When("^I select the \"([^\"]*)\" of the car$")
 	public void i_select_the_of_the_car(String engineOfTheCar) throws Throwable {
 	    print(engineOfTheCar);
-		se.selectEngine();
+		se.selectEngine(engineOfTheCar);
 	}
-	
+		
 	@Then("^I am asked to specify the registeration date$")
 	public void i_am_asked_to_specify_the_registeration_date() throws Throwable {
 		erd = new EnterRegistrationDate(se.getDriver());
@@ -171,13 +172,16 @@ public class RegisterInsuranceSteps {
 		erd.typeRegisterationDate();
 		erd.clickOnWeiter();
 	}
-	
+		
 	@Then("^I am asked to specify my birth date$")
 	public void i_am_asked_to_specify_my_birth_date() throws Throwable {
 		ebd = new EnterBirthDate(erd.getDriver());
 	    ebd.checkCurrentURL("https://hello.friday.de/quote/enterBirthDate");
 	    ebd.closeBrowser();
+	    
+	    System.out.println("==================================================");
 	}
+		
 //----------------------------------------------------------------------------
 	private void print(String arg) {
 		System.out.println("---------------------------------------> "+arg);

@@ -2,8 +2,6 @@ package services;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
-
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -12,9 +10,9 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.cucumber.listener.Reporter;
 import com.google.common.io.Files;
 
@@ -109,15 +107,15 @@ public class Driver  {
 	
 
 	public void checkCurrentURL(String expectedURL) {
-		/*
-		new WebDriverWait(driver, 2).until(
-			    return new ExpectedCondition<Boolean>() {
-			        @Override
+	
+		new WebDriverWait(driver, 5).until(
+			    new ExpectedCondition<Boolean>() {
 			        public Boolean apply(WebDriver d) {
-			            return d.executeScript("return document.readyState").equals("complete");
+			        	JavascriptExecutor jse = (JavascriptExecutor)d;
+			            return jse.executeScript("return document.readyState").equals("complete");
 			        }   
 			    }
-			); */
+			);
 		
 		String realURL = driver.getCurrentUrl();
 		System.out.println("------------------------------------URL is: "+realURL);

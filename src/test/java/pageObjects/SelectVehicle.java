@@ -7,18 +7,16 @@ import services.Utils;
 
 public class SelectVehicle extends Utils {
 		
-	final static String list = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/div/form/div[2]/button[1]";
-						 
-						 
-	final static String BMWItem = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/div/form/div[3]/div[2]/div[1]/button[3]";
-	
+	final static String wizardTitle = "//div[contains(.,'Wähle dein Auto aus')]";
+	static String autoBrand = "//button[contains(., 'brand')]";
 	
 	public SelectVehicle(Driver driver) {
-		super(driver,BMWItem);
+		super(driver,wizardTitle);
 	}
 	
-	public void selectCar() {
-		driver.click(BMWItem);
+	public void selectCar(String brand) {
+		autoBrand = autoBrand.replaceAll("brand", brand);
+		driver.click(autoBrand);
 	}
 	
 

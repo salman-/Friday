@@ -29,3 +29,5 @@ Feature: Create a new insurance contract.
     Examples: 
       | brand | model | body-type | fuel   | engine-power    | engine              |
       | BMW   | 1er   | Cabrio    | Benzin | 105 kW / 143 PS | HSN: 0005, TSN: AMP |
+      | BMW   | 2er   | Coupe     | Diesel | 110 kW / 150 PS | HSN: 0005, TSN: CCX |
+      | BMW   | 3er   | Kombi     | Benzin | 95 kW / 129 PS  | HSN: 0005, TSN: 874 |

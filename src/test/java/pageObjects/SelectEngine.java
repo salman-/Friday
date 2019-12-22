@@ -5,13 +5,16 @@ import services.Utils;
 
 public class SelectEngine extends Utils {
 	
-	final static String engine = "//button[contains(., '118I CABRIO')]";
+	final static String wizardTitle = "//div[contains(.,'Ist dein Auto dabei?')]";
+	static String autoEngine = "//button[contains(., 'engine')]";
 	
 	public SelectEngine(Driver driver) {
-		super(driver,engine);
+		super(driver,wizardTitle);
 	}
 
-	public void selectEngine() {
-		driver.click(engine);
+	public void selectEngine(String engineOfTheCar) {
+		
+		autoEngine = autoEngine.replaceAll("engine", engineOfTheCar);
+		driver.click(autoEngine);
 	}
 }
