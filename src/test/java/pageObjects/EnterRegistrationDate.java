@@ -6,8 +6,8 @@ import services.Utils;
 public class EnterRegistrationDate extends Utils{
 	
 	final static String wizardTitle = "//div[contains(.,'Wann war die Erstzulassung?')]";
-	final static String monthYearFirstRegistered = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/form/div/div[2]/div/div/input";
-	final static String weiterButton = "//button[contains(.,'Weiter')]";												
+	String monthYearFirstRegistered = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/form/div/div[2]/div/div/input";
+	String weiterButton = "//button[contains(.,'Weiter')]";												
 
 	public EnterRegistrationDate(Driver driver) {
 		super(driver,wizardTitle);

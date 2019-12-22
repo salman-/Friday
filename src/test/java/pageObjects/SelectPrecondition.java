@@ -9,9 +9,9 @@ public class SelectPrecondition extends Utils {
 	
 	
 	
-	final static String precondition = "//button[contains(.,'Das Auto wird noch zugelassen oder umgemeldet')]";
-	final static String inceptionDate = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/form/div[2]/div[2]/div/input";
-	final static String weiterButton = "//button[contains(.,'Weiter')]";
+	final  String precondition = "//button[contains(.,'Das Auto wird noch zugelassen oder umgemeldet')]";
+	final  String inceptionDate = "//*[@id=\"root\"]/div/div[3]/div/div[2]/div/div/form/div[2]/div[2]/div/input";
+	final  String weiterButton = "//button[contains(.,'Weiter')]";
 										  
 	
 	public SelectPrecondition(String url) {

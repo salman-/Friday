@@ -7,7 +7,7 @@ public class SelectModel extends Utils{
 	
 	
 	final static String wizardTitle = "//div[contains(.,'Wähle dein Automodell')]";
-	static String autoModel = "//button[contains(., 'model')]";
+	String autoModel = "//button[contains(., 'model')]";
 	
 	public SelectModel(Driver driver) {
 		

@@ -49,14 +49,6 @@ public class Driver  {
 		driver.findElement(By.xpath(xPath)).clear();
 	}
 
-	public String getText(String xPath) {	
-		return driver.findElement(By.xpath(xPath)).getAttribute("value");
-	}
-
-	public String getTextFromDiv(String xPath) {	
-		return driver.findElement(By.xpath(xPath)).getText();
-	}
-
 	public void click(String xPath) {
 		 driver.findElement(By.xpath(xPath)).click();
 	}
@@ -65,17 +57,6 @@ public class Driver  {
 		wait = new WebDriverWait(driver, seconds);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xPath)));
 	}
-
-
-	public void scrollDown() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("document-content")));
-		// Select last child of content div
-		WebElement element = driver.findElement(By.xpath("//div[@id='document-content']/*[last()]")); 
-		// Scroll to last child node
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-
-	}
-
 
 	public void takeScreenshot() {
 			
@@ -104,27 +85,11 @@ public class Driver  {
 	}
 
 
-	
-
 	public void checkCurrentURL(String expectedURL) {
-	
-		new WebDriverWait(driver, 5).until(
-			    new ExpectedCondition<Boolean>() {
-			        public Boolean apply(WebDriver d) {
-			        	JavascriptExecutor jse = (JavascriptExecutor)d;
-			            return jse.executeScript("return document.readyState").equals("complete");
-			        }   
-			    }
-			);
-		
+
 		String realURL = driver.getCurrentUrl();
-		System.out.println("------------------------------------URL is: "+realURL);
 		Assert.assertTrue(realURL.equals(expectedURL));
 		
 	}
-
-
-
-
 
 }

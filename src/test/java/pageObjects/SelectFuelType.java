@@ -8,7 +8,7 @@ public class SelectFuelType extends Utils {
 	
 	
 	final static String wizardTitle = "//div[contains(.,'Was tankst du?')]";
-	static String autoFuel = "//button[contains(., 'fuel')]";  
+	String autoFuel = "//button[contains(., 'fuel')]";  
 	
 	public SelectFuelType(Driver driver) {
 		
