@@ -24,4 +24,8 @@ public class Utils {
 		driver.checkCurrentURL(expectedURL);
 	}
 	
+	public void closeBrowser() {
+		driver.closeBrowser();
+	}
+	
 }

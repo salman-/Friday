@@ -109,7 +109,16 @@ public class Driver  {
 	
 
 	public void checkCurrentURL(String expectedURL) {
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		/*
+		new WebDriverWait(driver, 2).until(
+			    return new ExpectedCondition<Boolean>() {
+			        @Override
+			        public Boolean apply(WebDriver d) {
+			            return d.executeScript("return document.readyState").equals("complete");
+			        }   
+			    }
+			); */
+		
 		String realURL = driver.getCurrentUrl();
 		System.out.println("------------------------------------URL is: "+realURL);
 		Assert.assertTrue(realURL.equals(expectedURL));
