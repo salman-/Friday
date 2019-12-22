@@ -10,12 +10,16 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.cucumber.listener.Reporter;
 import com.google.common.io.Files;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.Data;
 
 
@@ -24,20 +28,33 @@ public class Driver  {
 
 	private WebDriver driver;
 	private WebDriverWait wait;
+	private String driverPath;
+	private File file;
 
 
-	public Driver() {
+	public Driver(String browserName) {
 
-		File file = new File("src/test/resources/driver/chromedriver.exe");
+		if(browserName.equals("chrome")) {
+			
+			WebDriverManager.chromedriver().setup();
+			driver = new ChromeDriver();
+			
+		}else if (browserName.equals("firefox")) {
+			
+			WebDriverManager.firefoxdriver().setup();
+			driver = new FirefoxDriver();
+		
+		} else if(browserName.equals("edge")) {
+			
+			WebDriverManager.edgedriver().setup();
+			driver = new EdgeDriver();
+		} 
 
-		String driverPath=file.getAbsolutePath();
-		System.out.println("Webdriver is in path: "+driverPath);
-		System.setProperty("webdriver.chrome.driver",driverPath); 
 	}
 
 
 	public void laodPage(String url) {
-		driver=new ChromeDriver();
+ 
 		driver.get(url);
 	}
 
