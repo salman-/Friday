@@ -5,8 +5,8 @@ This project automate the [sales funnel](https://hello.friday.de/quote/selectPre
 ------
 #### Pre-requsit to run the test
 
-1. Make sure you have installed [Lombok 1.18.2](https://projectlombok.org/)
-2. Make sure you have `Cucumber Eclipse plugin` on your `Eclipse` or the alternative for `Intellij`
+1. Install [Lombok 1.18.2](https://projectlombok.org/) 
+2. Install `Cucumber Eclipse plugin` on your `Eclipse` or the alternative for `Intellij`
 
 #### How to Run
 There are two different ways to run the test:
