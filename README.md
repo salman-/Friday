@@ -53,6 +53,7 @@ The last 3 test cases are failing, because the app is not following the normal s
 
 `select brand > select model > select body-type > select fuel > select engine-power > select engine` but in case of `TOYOTA | GT86` it does the following steps: `select brand > select model > select engine`. Therefore, the test is failing.
       
+ #### Getting test data using Postman
  
  In order to make sure, that the data is receiving in a proper structure do the following:
  
