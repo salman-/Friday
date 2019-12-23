@@ -49,9 +49,11 @@ We have selected 12 different cars from 3 different brands. We considered differ
       | CADILLAC | ATS      | Limousine | Benzin | 129 kW / 175 PS | HSN: 9116, TSN: AAM |
       | CADILLAC | Eldorado | Limousine | Benzin | 224 kW / 305 PS | HSN: 1006, TSN: 971 |
       
-The last 3 test cases are failing, because the app is not following the normal steps. For example `TOYOTA | GT86` skip from some levels. Usually, I expect that for each single car the following option are selected:
+The last 3 test cases are failing, because the app is not following the normal steps. For example `TOYOTA | GT86` skip from levels. Usually, for each single car the following option are selected:
 
-`select brand > select model > select body-type > select fuel > select engine-power > select engine` but in case of `TOYOTA | GT86` it does the following steps: `select brand > select model > select engine`. Therefore, the test is failing.
+`select brand > select model > select body-type > select fuel > select engine-power > select engine` 
+
+but in case of `TOYOTA | GT86` it does the following steps: `select brand > select model > select engine`. Therefore, the test is failing.
       
  #### Getting test data using Postman
  
