@@ -3,10 +3,10 @@ package runner;
 
 import org.junit.AfterClass;
 import org.junit.runner.RunWith;
-
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
-import com.cucumber.listener.Reporter;
+import com.vimalselvam.cucumber.listener.Reporter;
+
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
@@ -14,7 +14,7 @@ import com.cucumber.listener.Reporter;
 		monochrome = true,
 		plugin 				= {
 				"pretty",
-				"com.cucumber.listener.ExtentCucumberFormatter:target/report.html"
+				"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:target/report.html"
 		},
 
 		glue 				= {"stepDefinitions"}

@@ -14,7 +14,7 @@ public class Utils {
 	
 	
 	public Utils() {
-		this.driver = new Driver("edge");
+		this.driver = new Driver("chrome");
 		
 	}
 	

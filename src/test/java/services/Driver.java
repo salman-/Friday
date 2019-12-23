@@ -4,21 +4,16 @@ import java.io.File;
 import java.io.IOException;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.opera.OperaDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import com.cucumber.listener.Reporter;
+import com.vimalselvam.cucumber.listener.Reporter;
 import com.google.common.io.Files;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.Data;
 
@@ -97,7 +92,7 @@ public class Driver  {
 	}
 
 	public void closeBrowser() {
-		driver.close();
+		driver.quit();
 
 	}
 

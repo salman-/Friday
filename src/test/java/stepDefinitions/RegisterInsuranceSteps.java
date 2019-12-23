@@ -184,6 +184,6 @@ public class RegisterInsuranceSteps {
 		
 //----------------------------------------------------------------------------
 	private void print(String arg) {
-		System.out.println("---------------------------------------> "+arg);
+	//	System.out.println("---------------------------------------> "+arg);
 	}
 }
