@@ -49,8 +49,32 @@ We have selected 12 different cars from 3 different brands. We considered differ
       | CADILLAC | ATS      | Limousine | Benzin | 129 kW / 175 PS | HSN: 9116, TSN: AAM |
       | CADILLAC | Eldorado | Limousine | Benzin | 224 kW / 305 PS | HSN: 1006, TSN: 971 |
       
-     The last 3 test cases are failing, because the app is not following the normal steps. For example `TOYOTA | GT86` skip from some levels. Usually, I expect that for each single car the following option are selected:
-      `select brand > select model > body-type > fuel > engine-power > engine` but in case of `TOYOTA | GT86` it does the following steps: `select brand > select model > select engine`. Therefore, the test is failing.
+The last 3 test cases are failing, because the app is not following the normal steps. For example `TOYOTA | GT86` skip from some levels. Usually, I expect that for each single car the following option are selected:
+
+`select brand > select model > select body-type > select fuel > select engine-power > select engine` but in case of `TOYOTA | GT86` it does the following steps: `select brand > select model > select engine`. Therefore, the test is failing.
       
  
-    
+ In order to make sure, that the data is receiving in a proper structure do the following:
+ 
+ 1. Use *Postman* to send a *POST* request to `https://lookup-service.k8s.green.friday-prod.de/vehicleinfo/lookup`
+ 2. Set the json body of the request as below:
+ 
+ `{
+   "method":"findDetails_Ext",
+   "params":[
+      {
+         "make":"CADILLAC",
+         "model":"ATS"
+      }
+   ],
+   "id":"0812b2f6-2081-4496-befe-2eff772d6f6c",
+   "jsonrpc":"2.0"
+}`
+
+3. When you submit the request the *response* is:
+
+![](https://user-images.githubusercontent.com/4312244/71355261-c33ec800-257e-11ea-8788-f03b5a01b52b.png)
+
+Therefore, it seems that the Cars laready has the essential fields such as `engine`, `body-type` and so on, so it is a surprise why the is not following the norrmal steps. 
+
+Me, as a tester, I wish to talk with developers about the potential problems.
