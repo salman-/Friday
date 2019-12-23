@@ -1,14 +1,16 @@
 package pageObjects;
 
+import lombok.Data;
 import services.Driver;
-import services.Utils;
 
-public class EnterBirthDate extends Utils{
+@Data
+public class EnterBirthDate{
 	
+	Driver driver;
 	final static String wizardTitle = "//div[contains(.,'Wann wurdest du geboren?')]";
 	
 	public EnterBirthDate(Driver driver) {
-		super(driver,wizardTitle);
+		driver.waitForElement(wizardTitle, 2);
 	}
 
 }

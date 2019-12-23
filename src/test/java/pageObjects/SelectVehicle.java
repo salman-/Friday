@@ -2,16 +2,17 @@ package pageObjects;
 
 import lombok.Data;
 import services.Driver;
-import services.Utils;
 
-
-public class SelectVehicle extends Utils {
+@Data
+public class SelectVehicle {
 		
+	Driver driver;
 	final static String wizardTitle = "//div[contains(.,'Wähle dein Auto aus')]";
 	String autoBrand = "//button[contains(., 'brand')]";
 	
 	public SelectVehicle(Driver driver) {
-		super(driver,wizardTitle);
+		this.driver = driver;
+		driver.waitForElement(wizardTitle, 2);
 	}
 	
 	public void selectCar(String brand) {

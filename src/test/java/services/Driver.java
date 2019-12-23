@@ -13,22 +13,31 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.vimalselvam.cucumber.listener.Reporter;
-
-import cucumber.api.Scenario;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
-
 import com.google.common.io.Files;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.Data;
 
-
+@Data
 public class Driver  {
 
-	private WebDriver driver;
+	WebDriver driver;
 	private WebDriverWait wait;	
 	
-	public Driver(String browserName) {
+	public Driver() {
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
+		
+	}
+	
+	public void maximizeWindow() {
+		driver.manage().window().maximize();
+	}
+	
 
+	
+/*	public Driver(String browserName) {
+
+		
 		if(browserName.equals("chrome")) {
 			
 			WebDriverManager.chromedriver().setup();
@@ -45,7 +54,7 @@ public class Driver  {
 			driver = new EdgeDriver();
 		} 
 
-	}
+	}*/
 
 
 	public void laodPage(String url) {
