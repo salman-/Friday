@@ -10,9 +10,6 @@ public class Utils {
 	@Getter(AccessLevel.PUBLIC)
 	protected Driver driver;
 	
-	final static String logo = "//*[@id=\"root\"]/div/div[1]/div[1]/a";
-	
-	
 	public Utils() {
 		this.driver = new Driver("chrome");
 		
@@ -30,6 +27,10 @@ public class Utils {
 	
 	public void closeBrowser() {
 		driver.closeBrowser();
+	}
+	
+	public void takeScreenshot() {
+		driver.takeScreenshot();
 	}
 	
 }

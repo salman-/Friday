@@ -29,6 +29,7 @@ Feature: Create a new insurance contract.
     Examples: 
       | brand    | model    | body-type | fuel   | engine-power    | engine              |
       | TOYOTA   | Auris    | Kombi     | Benzin | 73 kW / 99 PS   | HSN: 5013, TSN: AIA |
+      | CADILLAC | Eldorado | Limousine | Benzin | 224 kW / 305 PS | HSN: 1006, TSN: 971 |
  #     | TOYOTA   | Camry    | Kombi     | Diesel | 63 kW / 86 PS   | HSN: 7104, TSN: 494 |
  #     | BMW      | 3er      | Kombi     | Benzin | 95 kW / 129 PS  | HSN: 0005, TSN: 874 |
  #     | BMW      | 1er      | Cabrio    | Benzin | 105 kW / 143 PS | HSN: 0005, TSN: AMP |

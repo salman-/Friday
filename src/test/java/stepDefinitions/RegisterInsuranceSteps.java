@@ -1,6 +1,5 @@
 package stepDefinitions;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -33,16 +32,21 @@ public class RegisterInsuranceSteps {
 	@Given("^I am in the starting page$")
 	public void i_am_in_the_starting_page() throws Throwable {
 		sp = new SelectPrecondition("https://hello.friday.de/quote/selectPrecondition");
+		sp.takeScreenshot();
+		
 	}
 
 	@Given("^The car is already insured$")
 	public void the_car_is_already_insured() throws Throwable {
 		sp.selectInsuranceOption();
+		
 	}
 
 	@Given("^I want to have an insurance from today$")
 	public void i_want_to_have_an_insurance_from_today() throws Throwable {
 		sp.typeInsuranceStartingDate();
+		
+		
 	}
 
 	@When("^I click on Weiter button$")
@@ -54,6 +58,7 @@ public class RegisterInsuranceSteps {
 	public void it_asks_for_the_owner_of_the_car() throws Throwable {
 		sro = new SelectRegisteredOwner(sp.getDriver());
 	    sro.checkCurrentURL("https://hello.friday.de/quote/selectRegisteredOwner");
+	    sro.takeScreenshot();
 	}
 	
 	//----------------------------------------------------------------------------------------- selectRegisteredOwner
@@ -78,6 +83,7 @@ public class RegisterInsuranceSteps {
 	public void it_navigates_to_selectVehicle() throws Throwable {
 		sv = new SelectVehicle(sro.getDriver());
 		sv.checkCurrentURL("https://hello.friday.de/quote/selectVehicle");
+		sv.takeScreenshot();
 	 
 	}
 	
@@ -93,6 +99,7 @@ public class RegisterInsuranceSteps {
 	public void i_am_asked_to_specify_the_model_of_my_car_in_selectModel() throws Throwable {
 		sm = new SelectModel(sv.getDriver());
 	    sm.checkCurrentURL("https://hello.friday.de/quote/selectModel");
+	    sm.takeScreenshot();
 	}
 //---------------------------------------------------------------------------  selectModelType
 	@When("^I click on the \"([^\"]*)\" of my car$")
@@ -106,6 +113,7 @@ public class RegisterInsuranceSteps {
 	public void i_am_ask_to_specify_the_body_type_of_the_car() throws Throwable {
 	    sbt = new SelectBodyType(sm.getDriver());
 	    sbt.checkCurrentURL("https://hello.friday.de/quote/selectBodyType");
+	    sbt.takeScreenshot();
 	}
 //------------------------------------------------------------------------------   selectBodyType
 	
@@ -121,6 +129,7 @@ public class RegisterInsuranceSteps {
 		
 		 sft = new SelectFuelType(sbt.getDriver());
 		 sbt.checkCurrentURL("https://hello.friday.de/quote/selectFuelType");
+		 sbt.takeScreenshot();
 	    
 	}
 	
@@ -137,10 +146,11 @@ public class RegisterInsuranceSteps {
 	public void i_am_asked_to_specify_the_horse_power_of_the_car() throws Throwable {
 	    sep = new SelectEnginePower(sft.getDriver());
 	    sep.checkCurrentURL("https://hello.friday.de/quote/selectEnginePower");
+	    sep.takeScreenshot();
 	}
 	
 //--------------------------------------------------------  selectEnginePower
-		@When("^I select the \"([^\"]*)\" of engine$")
+	@When("^I select the \"([^\"]*)\" of engine$")
 	public void i_select_the_of_engine(String powerOfEngine) throws Throwable {
 		print(powerOfEngine);
 	    sep.selectHorsePower(powerOfEngine);
@@ -150,6 +160,7 @@ public class RegisterInsuranceSteps {
 	public void i_am_asked_specify_Engine() throws Throwable {
 		se = new SelectEngine(sep.getDriver());
 		se.checkCurrentURL("https://hello.friday.de/quote/selectEngine");
+		se.takeScreenshot();
 	}
 //----------------------------------------------------------------- select Engine
 		
@@ -163,6 +174,7 @@ public class RegisterInsuranceSteps {
 	public void i_am_asked_to_specify_the_registeration_date() throws Throwable {
 		erd = new EnterRegistrationDate(se.getDriver());
 		erd.checkCurrentURL("https://hello.friday.de/quote/enterRegistrationDate");
+		erd.takeScreenshot();
 	}
 	
 //------------------------------------------------------------------ Registeration date
@@ -177,6 +189,7 @@ public class RegisterInsuranceSteps {
 	public void i_am_asked_to_specify_my_birth_date() throws Throwable {
 		ebd = new EnterBirthDate(erd.getDriver());
 	    ebd.checkCurrentURL("https://hello.friday.de/quote/enterBirthDate");
+	    ebd.takeScreenshot();
 	    ebd.closeBrowser();
 	    
 	    System.out.println("==================================================");
