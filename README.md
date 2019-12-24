@@ -104,7 +104,6 @@ And finally the `Driver` class:
 public class Driver  {
 
 	WebDriver driver;
-	private WebDriverWait wait;	
 }
 ```
 
