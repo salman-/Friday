@@ -106,7 +106,9 @@ public class Driver  {
 	WebDriver driver;
 }
 ```
+Here is the class diagram of the  `Driver`, `Step` and `Hooks`
 
+![](https://user-images.githubusercontent.com/4312244/71407248-d3b47880-263a-11ea-9d6e-2abfbf9a286f.png)
 
 
 ------
