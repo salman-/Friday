@@ -32,6 +32,86 @@ Manage boilerplate code | [Lombok 1.18.2](https://projectlombok.org/)
 IDE | STS 3.9.6.RELEASE
 
 ------
+#### How code works
+
+Inorder to connect `Hook` to `steps`, we need to use the `cucumber-picocontainer` as dependency:
+
+```{xml}
+<dependency>
+      <groupId>info.cukes</groupId>
+      <artifactId>cucumber-picocontainer</artifactId>
+      <version>1.2.5</version>
+ </dependency>
+```
+And then implementation of dependency injection in cucumber and selenium is as below:
+
+The `step` class:  
+
+```{java}
+public class RegisterInsuranceSteps extends Driver{
+
+	Driver driver;
+
+
+	public RegisterInsuranceSteps(Driver driver) {
+
+		this.driver = driver;
+	}
+
+	public RegisterInsuranceSteps() {}
+
+```
+
+The `Hook` class
+```{java}
+
+public class Hooks extends Driver{
+
+	Driver driver;
+	
+	public Hooks(Driver driver) {
+		this.driver = driver;
+	}
+	
+	public Hooks() {}
+	
+	@Before
+	public void testInitializer(){
+
+		WebDriverManager.chromedriver().setup();
+		WebDriver dr = driver.getDriver() ;
+		dr = new ChromeDriver();
+		
+		driver.setDriver(dr);
+		driver.maximizeWindow();	
+	}
+
+	@After
+	public void tearDownTest(Scenario scenario){
+		
+		if(scenario.isFailed())
+			driver.takeScreenshot();
+		driver.closeBrowser();
+
+	}
+
+}
+```
+
+And finally the `Driver` class:
+
+```{java}
+public class Driver  {
+
+	WebDriver driver;
+}
+```
+Here is the class diagram of the  `Driver`, `Step` and `Hooks`
+
+![](https://user-images.githubusercontent.com/4312244/71407248-d3b47880-263a-11ea-9d6e-2abfbf9a286f.png)
+
+
+------
 #### Discussion about TestCases:
 
 We have selected 12 different cars from 3 different brands. We considered different parameters such `model`, `body-type`, `fuel`, `enginer-power` and `engine` as below:
@@ -63,7 +143,8 @@ but in case of `TOYOTA | GT86` it does the following steps: `select brand > sele
  1. Use *Postman* to send a *POST* request to `https://lookup-service.k8s.green.friday-prod.de/vehicleinfo/lookup`
  2. Set the json body of the request as below:
  
- `{
+```{json}
+{
    "method":"findDetails_Ext",
    "params":[
       {
@@ -73,7 +154,8 @@ but in case of `TOYOTA | GT86` it does the following steps: `select brand > sele
    ],
    "id":"0812b2f6-2081-4496-befe-2eff772d6f6c",
    "jsonrpc":"2.0"
-}`
+}
+```
 
 3. When you submit the request the *response* is:
 
@@ -82,3 +164,6 @@ but in case of `TOYOTA | GT86` it does the following steps: `select brand > sele
 Therefore, it seems that the Cars laready has the essential fields such as `engine`, `body-type` and so on, so it is a surprise why the last 3 testcases are not following the norrmal steps. 
 
 Me, as a tester, I wish to talk with developers about the potential problems.
+
+
+

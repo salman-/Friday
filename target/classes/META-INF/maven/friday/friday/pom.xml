@@ -49,15 +49,17 @@
 			<version>3.141.59</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-support -->
-		<!--dependency> <groupId>org.seleniumhq.selenium</groupId> <artifactId>selenium-support</artifactId> 
-			<version>3.141.59</version> </dependency -->
+		<!-- -->
+		<!-- -->
+		<!-- -->
+		<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-picocontainer -->
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-picocontainer</artifactId>
+			<version>1.2.5</version>
+		</dependency>
 
-		<!-- -->
-		<!-- -->
-		<!-- -->
-
- 	<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-java -->
+		<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-java -->
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-java</artifactId>
@@ -69,7 +71,6 @@
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-junit</artifactId>
 			<version>1.2.5</version>
-			<scope>test</scope>
 		</dependency>
 
 		<!-- -->

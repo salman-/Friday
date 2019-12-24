@@ -5,10 +5,9 @@ import java.time.format.DateTimeFormatter;
 
 import lombok.Data;
 import services.Driver;
-import services.GeneralPage;
 
 @Data
-public class SelectPrecondition /*extends GeneralPage*/ {
+public class SelectPrecondition {
 	
 	Driver driver;
 	final  String precondition = "//button[contains(.,'Das Auto wird noch zugelassen oder umgemeldet')]";

@@ -1,7 +1,5 @@
 package stepDefinitions;
 
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -17,7 +15,17 @@ import pageObjects.SelectRegisteredOwner;
 import pageObjects.SelectVehicle;
 import services.Driver;
 
-public class RegisterInsuranceSteps{
+public class RegisterInsuranceSteps extends Driver{
+
+	Driver driver;
+
+
+	public RegisterInsuranceSteps(Driver driver) {
+
+		this.driver = driver;
+	}
+
+	public RegisterInsuranceSteps() {}
 
 	SelectPrecondition sp;
 	SelectRegisteredOwner sro;
@@ -29,25 +37,6 @@ public class RegisterInsuranceSteps{
 	SelectEngine se;
 	EnterRegistrationDate erd;
 	EnterBirthDate ebd;
-
-	Driver driver;
-
-	@Before
-	public void testInitializer(){
-		driver = new Driver();
-		driver.maximizeWindow();
-
-		System.out.println("========================== Before Scenario =======================");
-	}
-
-
-
-	@After
-	public void tearDownTest(){
-		driver.closeBrowser();
-		System.out.println("========================== After Scenario =======================");
-	}
-
 
 	//---------------------------------------------------------- selectPrecondition	
 
