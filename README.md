@@ -63,28 +63,7 @@ but in case of `TOYOTA | GT86` it does the following steps: `select brand > sele
  1. Use *Postman* to send a *POST* request to `https://lookup-service.k8s.green.friday-prod.de/vehicleinfo/lookup`
  2. Set the json body of the request as below:
  
- `{
-   "method":"findDetails_Ext",
-   "params":[
-      {
-         "make":"CADILLAC",
-         "model":"ATS"
-      }
-   ],
-   "id":"0812b2f6-2081-4496-befe-2eff772d6f6c",
-   "jsonrpc":"2.0"
-}`
-
-3. When you submit the request the *response* is:
-
-![](https://user-images.githubusercontent.com/4312244/71355261-c33ec800-257e-11ea-8788-f03b5a01b52b.png)
-
-Therefore, it seems that the Cars laready has the essential fields such as `engine`, `body-type` and so on, so it is a surprise why the last 3 testcases are not following the norrmal steps. 
-
-Me, as a tester, I wish to talk with developers about the potential problems.
-
-
-```{r}
+```{json}
 {
    "method":"findDetails_Ext",
    "params":[
@@ -97,3 +76,14 @@ Me, as a tester, I wish to talk with developers about the potential problems.
    "jsonrpc":"2.0"
 }
 ```
+
+3. When you submit the request the *response* is:
+
+![](https://user-images.githubusercontent.com/4312244/71355261-c33ec800-257e-11ea-8788-f03b5a01b52b.png)
+
+Therefore, it seems that the Cars laready has the essential fields such as `engine`, `body-type` and so on, so it is a surprise why the last 3 testcases are not following the norrmal steps. 
+
+Me, as a tester, I wish to talk with developers about the potential problems.
+
+
+
