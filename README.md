@@ -32,6 +32,85 @@ Manage boilerplate code | [Lombok 1.18.2](https://projectlombok.org/)
 IDE | STS 3.9.6.RELEASE
 
 ------
+#### How code works
+
+Inorder to connect `Hook` to `steps`, we need to use the `cucumber-picocontainer` as dependency:
+
+```{xml}
+<dependency>
+      <groupId>info.cukes</groupId>
+      <artifactId>cucumber-picocontainer</artifactId>
+      <version>1.2.5</version>
+ </dependency>
+```
+And then implementation of dependency injection in cucumber and selenium is as below:
+
+The `step` class:  
+
+```{java}
+public class RegisterInsuranceSteps extends Driver{
+
+	Driver driver;
+
+
+	public RegisterInsuranceSteps(Driver driver) {
+
+		this.driver = driver;
+	}
+
+	public RegisterInsuranceSteps() {}
+
+```
+
+The `Hook` class
+```{java}
+
+public class Hooks extends Driver{
+
+	Driver driver;
+	
+	public Hooks(Driver driver) {
+		this.driver = driver;
+	}
+	
+	public Hooks() {}
+	
+	@Before
+	public void testInitializer(){
+
+		WebDriverManager.chromedriver().setup();
+		WebDriver dr = driver.getDriver() ;
+		dr = new ChromeDriver();
+		
+		driver.setDriver(dr);
+		driver.maximizeWindow();	
+	}
+
+	@After
+	public void tearDownTest(Scenario scenario){
+		
+		if(scenario.isFailed())
+			driver.takeScreenshot();
+		driver.closeBrowser();
+
+	}
+
+}
+```
+
+And finally the `Driver` class:
+
+```{java}
+public class Driver  {
+
+	WebDriver driver;
+	private WebDriverWait wait;	
+}
+```
+
+
+
+------
 #### Discussion about TestCases:
 
 We have selected 12 different cars from 3 different brands. We considered different parameters such `model`, `body-type`, `fuel`, `enginer-power` and `engine` as below:
