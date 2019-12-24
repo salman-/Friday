@@ -82,3 +82,18 @@ but in case of `TOYOTA | GT86` it does the following steps: `select brand > sele
 Therefore, it seems that the Cars laready has the essential fields such as `engine`, `body-type` and so on, so it is a surprise why the last 3 testcases are not following the norrmal steps. 
 
 Me, as a tester, I wish to talk with developers about the potential problems.
+
+
+```{r}
+{
+   "method":"findDetails_Ext",
+   "params":[
+      {
+         "make":"CADILLAC",
+         "model":"ATS"
+      }
+   ],
+   "id":"0812b2f6-2081-4496-befe-2eff772d6f6c",
+   "jsonrpc":"2.0"
+}
+```
